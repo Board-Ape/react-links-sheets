@@ -4,6 +4,7 @@ import sheets from './sheets.png';
 import './App.css';
 
 import Tabletop from 'tabletop';
+import { CSVLink } from 'react-csv';
 
 function App() {
   const [googleSheets, setGoogleSheets] = useState([]);
@@ -29,7 +30,8 @@ function App() {
         <img src={sheets} className="App-logo" alt="sheets logo" />
         <h1 className="App-title">React Links Google Sheets</h1>
       </header>
-      <button onClick={updateApplication} type="submit" className="update-button">Update Application</button>
+      <button onClick={updateApplication} type="submit" className="gen-button update-button">Update Application</button>
+      <button type="submit" className="gen-button export-button"><CSVLink data={googleSheets} filename="data.csv">Export</CSVLink></button>
       <main style={{width: 800 + 'px', display: 'inline-flex', justifyContent: 'space-between'}}>
         {googleSheets.map((item, idx) => (
           <div key={item.idx + item.name}>
